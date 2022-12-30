@@ -47,11 +47,11 @@ pipeline{
             steps{
                 
                 script{
-                    withCredentials([string(credentialsId: 'sonar_jenkins', variable: 'nexus_creds')]) {
+                    withCredentials([string(credentialsId: 'revised_nexus_credentials', variable: 'NEXUS_DETAILS')]) {
                      sh '''
                      docker build -t 3.249.181.124:8083/java-spring-app:${VERSION} .
                      
-                     docker login -u admin -p scaletific 3.249.181.124:8083
+                     docker login -u admin -p $NEXUS_DETAILS 3.249.181.124:8083
 
                      docker push 3.249.181.124:8083/java-spring-app:${VERSION} 
 
