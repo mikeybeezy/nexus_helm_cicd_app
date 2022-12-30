@@ -51,7 +51,7 @@ pipeline{
                      sh '''
                      docker build -t 3.249.181.124:8083/java-spring-app:${VERSION} .
                      
-                     docker login -u admin -p $nexus_creds 3.249.181.124:8083
+                     docker login -u admin -p scaletific 3.249.181.124:8083
 
                      docker push 3.249.181.124:8083/java-spring-app:${VERSION} 
 
