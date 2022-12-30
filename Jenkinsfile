@@ -34,11 +34,12 @@ pipeline{
                 script{
 
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar_jenkins'
-                    sh 'mvn clean package sonar:sonar'
                 }
 
             }
         }
+
+        stage()
     }
 
 }
