@@ -1,7 +1,7 @@
 pipeline{
-    agent{
-        label "node"
-    }
+    
+    agent any
+
     stages{
         stage("Sonar quality status"){
             
