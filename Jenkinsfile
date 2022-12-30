@@ -4,11 +4,12 @@ pipeline{
     }
     stages{
         stage("Sonar quality status"){
+            
             agent{
-
-                docker{
+                docker {
                     image: "maven"
                 }
+            
             }
             steps{
                 echo "========executing A========"
