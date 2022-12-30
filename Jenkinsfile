@@ -49,13 +49,13 @@ pipeline{
                 script{
                     withCredentials([string(credentialsId: 'revised_nexus_credentials', variable: 'NEXUS_DETAILS')]) {
                      sh '''
-                     docker build -t 3.249.181.124:8083/java-spring-app:${VERSION} .
+                     docker build -t 34.251.22.225:8083/java-spring-app:${VERSION} .
                      
-                     docker login -u admin -p $NEXUS_DETAILS 3.249.181.124:8083
+                     docker login -u admin -p $NEXUS_DETAILS 34.251.22.225:8083
 
-                     docker push 3.249.181.124:8083/java-spring-app:${VERSION} 
+                     docker push 34.251.22.225:8083/java-spring-app:${VERSION} 
 
-                     docker rmi 3.249.181.124:8083/java-spring-app:${VERSION} 
+                     docker rmi 34.251.22.225/:8083/java-spring-app:${VERSION} 
 
                      '''
 
