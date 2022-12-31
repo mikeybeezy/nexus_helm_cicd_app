@@ -56,13 +56,17 @@ pipeline{
                      docker push 34.251.22.225:8083/java-spring-app:${VERSION} 
 
                      docker rmi 34.251.22.225:8083/java-spring-app:${VERSION} 
-                     docker rmi 34.251.22.225:8083/java-spring-app:${VERSION} 
-                     docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')
                      '''
 
                     }
-
                 }
+                script{
+                    withCredentials([string(credentialsId: 'revised_nexus_credentials', variable: 'NEXUS_DETAILS')]) {
+                     sh 'docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')'
+
+                    }
+                }
+
             }
         }
         stage("identifying misconfigurations using datree"){
