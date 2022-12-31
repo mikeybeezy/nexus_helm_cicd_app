@@ -84,7 +84,7 @@ pipeline{
                         sh '''
                         helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d ' ') 
                         tar -czcf myapp-${helmversion}.tgz myapp/
-                        curl -u admin:$revised_nexus_credentials http://34.251.22.225:8081/repository/first-java-app/ --upload-file myapp-${helmversion}.tgz -v
+                        curl -u admin:$revised_nexus_credentials http://34.251.22.225:8081/#browse/browse:first-java-app --upload-file myapp-${helmversion}.tgz -v
                         '''
                         }
 
