@@ -57,12 +57,9 @@ pipeline{
 
                      docker rmi 34.251.22.225:8083/java-spring-app:${VERSION} 
                      '''
+                    sh 'docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')'
 
                     }
-                }
-                script{
-                     sh 'docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')'
-
                 }
 
             }
