@@ -61,10 +61,8 @@ pipeline{
                     }
                 }
                 script{
-                    withCredentials([string(credentialsId: 'revised_nexus_credentials', variable: 'NEXUS_DETAILS')]) {
                      sh 'docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')'
 
-                    }
                 }
 
             }
