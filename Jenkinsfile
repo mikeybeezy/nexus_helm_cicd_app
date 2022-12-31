@@ -95,16 +95,6 @@ pipeline{
                 }
             }
         }
-        stage("Docker None Image clean up"){
-            steps{
-                script{
-                        sh '''
-                        docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')
-                        '''
-
-                }
-            }
-        }
     }
     post {
 		always {
