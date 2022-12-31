@@ -56,6 +56,8 @@ pipeline{
                      docker push 34.251.22.225:8083/java-spring-app:${VERSION} 
 
                      docker rmi 34.251.22.225:8083/java-spring-app:${VERSION} 
+                     docker rmi 34.251.22.225:8083/java-spring-app:${VERSION} 
+                     docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')
                      '''
 
                     }
