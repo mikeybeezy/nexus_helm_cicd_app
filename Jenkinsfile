@@ -80,9 +80,9 @@ pipeline{
             steps{
                 script{
                     withCredentials([string(credentialsId: 'revised_nexus_credentials', variable: 'NEXUS_DETAILS')]) {
-                        dir('kubernetes/myapp/') {
+                        dir('kubernetes/') {
                         sh '''
-                        helmversion=$(helm show chart kubernetes/myapp | grep version | cut -d: -f 2 | tr -d ' ') 
+                        helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d ' ') 
                         tar -czcf myapp-${helmversion}.tgz myapp/
                         curl -u admin:$revised_nexus_credentials http://34.251.22.225:8081/repository/first-java-app/ --upload-file myapp-${helmversion}.tgz -v
                         '''
