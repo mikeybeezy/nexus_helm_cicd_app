@@ -87,9 +87,6 @@ pipeline{
                         curl -u admin:$NEXUS_DETAILS http://34.251.22.225:8081/repository/first-java-app/ --upload-file myapp-${helmversion}.tgz -v
                         '''
                         }
-
-               
-
                     }
 
                 }
@@ -103,6 +100,3 @@ pipeline{
 	}
 
 }
-
-
-docker rmi $(docker images |grep "<none>"|awk '$1=="<none>" {print $3}')
