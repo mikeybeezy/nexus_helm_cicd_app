@@ -84,7 +84,7 @@ pipeline{
                         sh '''
                         helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d ' ') 
                         tar -czcf myapp-${helmversion}.tgz myapp/
-                        curl -u admin:scaletific http://34.251.22.225:8081/repository/first-java-app/ --upload-file myapp-0.2.0.tgz -v
+                        curl -u admin:$NEXUS_DETAILS http://34.251.22.225:8081/repository/first-java-app/ --upload-file myapp-${helmversion}.tgz -v
                         '''
                         }
 
